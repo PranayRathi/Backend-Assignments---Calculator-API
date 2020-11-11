@@ -32,7 +32,7 @@ app.post("/add", (req, res) => {
         responseMsg.status = "error";
         responseMsg.message = "invalid data types";
         responseMsg.sum = "";
-        res.status(400).send(responseMsg);
+        res.send(responseMsg);
         return;
     }
 
@@ -40,7 +40,7 @@ app.post("/add", (req, res) => {
         responseMsg.status = "failure";
         responseMsg.message = "Overflow";
         responseMsg.sum = "" ;
-        res.status(404).send(responseMsg);
+        res.end(responseMsg);
         return;
     }
     responseMsg.status =  "success",
@@ -96,7 +96,7 @@ app.post("/multiply", (req, res) => {
         message: "the product of given two numbers",
         result: num1 * num2
     }
-    res.status(200).send(op);
+    res.send(op);
 });
 
 //API for division
