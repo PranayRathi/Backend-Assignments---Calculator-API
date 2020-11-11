@@ -31,7 +31,7 @@ app.post("/add", (req, res) => {
     if(typeof(num1)=== 'string' || typeof(num2)=== 'string'){
         responseMsg.status = "error";
         responseMsg.message = "invalid data types";
-        responseMsg.sum = null;
+        responseMsg.sum = "";
         res.status(400).send(responseMsg);
         return;
     }
@@ -47,7 +47,8 @@ app.post("/add", (req, res) => {
     responseMsg.message =  "the sum of given two numbers",
     responseMsg.sum =  num1 + num2;
     res.status(200).send(responseMsg);
-}) 
+    res.end();
+});
 
 //API for substraction
 app.post("/sub", (req, res) => {
