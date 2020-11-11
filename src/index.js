@@ -40,7 +40,7 @@ app.post("/add", (req, res) => {
         responseMsg.status = "failure";
         responseMsg.message = "Overflow";
         responseMsg.sum = "" ;
-        res.end(responseMsg);
+        res.send(responseMsg);
         return;
     }
     responseMsg.status =  "success",
