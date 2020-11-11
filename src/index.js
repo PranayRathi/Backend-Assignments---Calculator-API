@@ -13,10 +13,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 // your code goes here
 
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
     res.send("Hello world!");
 })
 
+const responseMsg = {
+        status: "",
+        message: ""
+}
 
 //API for Addition
 app.post("/add", (req, res) => {
@@ -25,20 +29,24 @@ app.post("/add", (req, res) => {
     const num2 = req.body.num2;
    
     if(typeof(num1)=== 'string' || typeof(num2)=== 'string'){
-        res.status(400).send("invalid data types");
+        responseMsg.status = "error";
+        responseMsg.message = "invalid data types";
+        responseMsg.sum = null;
+        res.status(400).send(responseMsg);
         return;
     }
 
     if(num1 >= 1000000 || num2 >= 1000000){
-        res.status(404).send("Overflow");
+        responseMsg.status = "failure";
+        responseMsg.message = "Overflow";
+        responseMsg.sum = "" ;
+        res.status(404).send(responseMsg);
         return;
     }
-    const op = {
-        status: "success/failure/error",
-        message: "the sum of given two numbers",
-        sum: num1 + num2
-    }
-    res.status(200).send(op);
+    responseMsg.status =  "success",
+    responseMsg.message =  "the sum of given two numbers",
+    responseMsg.sum =  num1 + num2;
+    res.status(200).send(responseMsg);
 }) 
 
 //API for substraction
