@@ -22,8 +22,8 @@ app.post("/add", (req, res) => {
     
     const num1 = req.body.num1;
     const num2 = req.body.num2;
-   
-    if(typeof(num1)=== 'string' || typeof(num2)=== 'string'){
+
+    if(typeof(num1) !== 'number' || typeof(num2) !== 'number'){
         res.status(400).send({
             status : "error",
             message : "invalid data types",
@@ -56,7 +56,7 @@ app.post("/sub", (req, res) => {
     const num1 = req.body.num1;
     const num2 = req.body.num2;
    
-    if(typeof(num1)=== 'string' || typeof(num2)=== 'string'){
+    if(typeof(num1) !== 'number' || typeof(num2) !== 'number'){
         res.status(200).send({
             status : "error",
             message : "invalid data types"
@@ -97,7 +97,7 @@ app.post("/multiply", (req, res) => {
     const num1 = req.body.num1;
     const num2 = req.body.num2;
    
-    if(typeof(num1)=== 'string' || typeof(num2)=== 'string'){
+    if(typeof(num1) !== 'number' || typeof(num2) !== 'number'){
         res.status(200).send({
             status : "error",
             message : "invalid data types"
@@ -130,7 +130,7 @@ app.post("/division", (req, res) => {
     const num1 = req.body.num1;
     const num2 = req.body.num2;
    
-    if(typeof(num1)=== 'string' || typeof(num2)=== 'string'){
+    if(typeof(num1) !== 'number' || typeof(num2) !== 'number'){
         res.status(200).send({
             status : "error",
             message : "invalid data types"
