@@ -106,7 +106,7 @@ app.post("/multiply", (req, res) => {
 }) 
 
 //API for division
-app.post("/division", (req, res) => {
+app.post("/divide", (req, res) => {
     
     const num1 = req.body.num1;
     const num2 = req.body.num2;
