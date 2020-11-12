@@ -24,20 +24,18 @@ app.post("/add", (req, res) => {
     const num2 = req.body.num2;
    
     if(typeof(num1)=== 'string' || typeof(num2)=== 'string'){
-        res.status(200).send({
+        res.status(400).send({
             status : "error",
             message : "invalid data types",
-            sum : ""
         });
         res.end();
         return;
     }
 
     if(num1 >= 1000000 || num2 >= 1000000){
-        res.status(200).send({
+        res.status(400).send({
             status : "failure",
-            message : "Overflow",
-            sum : ""
+            message : "Overflow"
         });
         res.end();
         return;
@@ -61,8 +59,7 @@ app.post("/sub", (req, res) => {
     if(typeof(num1)=== 'string' || typeof(num2)=== 'string'){
         res.status(200).send({
             status : "error",
-            message : "invalid data types",
-            difference : ""
+            message : "invalid data types"
         });
         res.end();
         return;
@@ -71,8 +68,7 @@ app.post("/sub", (req, res) => {
     if(num1 < 1000000){
         res.status(200).send({
             status : "failure",
-            message : "Underflow",
-            difference : ""
+            message : "Underflow"
         });
         res.end();
         return;
@@ -80,8 +76,7 @@ app.post("/sub", (req, res) => {
     if(num2 < 1000000){
         res.status(200).send({
             status : "failure",
-            message : "Underflow",
-            difference : ""
+            message : "Underflow"
         });
         res.end();
         return;
@@ -90,7 +85,7 @@ app.post("/sub", (req, res) => {
     res.status(200).send({
         status : "success",
         message : "the difference of given two numbers",
-        difference : num1 - num2
+        difference : parseFloat(num1 - num2)
     });
     res.end();
     return;
@@ -105,8 +100,7 @@ app.post("/multiply", (req, res) => {
     if(typeof(num1)=== 'string' || typeof(num2)=== 'string'){
         res.status(200).send({
             status : "error",
-            message : "invalid data types",
-            result : ""
+            message : "invalid data types"
         });
         res.end();
         return;
@@ -115,8 +109,7 @@ app.post("/multiply", (req, res) => {
     if(num1 > 1000000 || num2 > 1000000){
         res.status(200).send({
             status : "failure",
-            message : "Overflow",
-            result : ""
+            message : "Overflow"
         });
         res.end();
         return;
@@ -140,8 +133,7 @@ app.post("/division", (req, res) => {
     if(typeof(num1)=== 'string' || typeof(num2)=== 'string'){
         res.status(200).send({
             status : "error",
-            message : "invalid data types",
-            result : ""
+            message : "invalid data types"
         });
         res.end();
         return;
@@ -150,8 +142,7 @@ app.post("/division", (req, res) => {
     if(num2 ==0){
         res.status(200).send({
             status : "failure",
-            message : "Cannot divide by zero",
-            result : ""
+            message : "Cannot divide by zero"
         });
         res.end();
         return;
